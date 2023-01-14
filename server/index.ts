@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
 import cors from 'cors';
 
 import dotenv from 'dotenv';
@@ -32,5 +32,20 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("management", managementRoutes);
 app.use("/sales", salesRoutes);
+/* MONGOOSE SETUP */
+
+const PORT = process.env.PORT || 9000;
+const url = process.env.MONGO_URL || '';
+console.log({ url });
+mongoose.set('strictQuery', false);
+mongoose.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+} as ConnectOptions)
+    .then(() => {
+        app.listen(PORT, () => console.log(`Server PORT:${PORT}`));
+    }).catch((error) => console.log(`${error} did not connect`))
+
+
 
 
