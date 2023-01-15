@@ -1,10 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useMemo } from 'react';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { themeSettings } from 'theme';
 import './App.css';
+import { useSelector } from 'react-redux';
+import { RootState } from 'state/store';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Navigate } from 'react-router';
+import Dashboard from 'scenes/dashboard';
+import Layout from 'scenes/layout';
 
-function App() {
+
+
+
+const App = () => {
+  const mode = useSelector((state: RootState) => state.global.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
   return (
-    <div></div>
+    <div className='app'>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Route>
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 
