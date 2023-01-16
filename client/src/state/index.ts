@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface IGlobalState {
     mode: 'dark' | 'light',
-    userId?: string
+    userId: string
 }
 const initialState: IGlobalState = {
     mode: 'dark',

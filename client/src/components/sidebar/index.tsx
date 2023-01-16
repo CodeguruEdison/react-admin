@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect, useState } from 'react'
 import { ISideBarProps } from './sidebar.type'
-import { Box, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from '@mui/material'
+import { Box, Divider, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from '@mui/material'
 import {
     SettingsOutlined, ChevronLeft, ChevronRightOutlined, HomeOutlined, AdminPanelSettingsOutlined,
     CalendarMonthOutlined, Groups2Outlined, PieChartOutlined, PointOfSaleOutlined, PublicOutlined,
@@ -8,9 +8,10 @@ import {
     TrendingUpOutlined
 } from '@mui/icons-material';
 import { useLocation, useNavigate } from 'react-router-dom';
-import profileImage from 'assets/profile.jpg'
+import profileImage from 'assets/profile.jpeg'
 import Drawer from '@mui/material/Drawer';
 import FlexBetween from 'components/FlexBetween';
+import UserItem from './userItem';
 const navItems = [
     {
         text: "Dashboard",
@@ -73,7 +74,8 @@ const SideBar: FC<PropsWithChildren<ISideBarProps>> = (props) => {
     const { isNonMobile,
         isSideBarOpen,
         drawerWidth,
-        setIsSideBarOpen
+        setIsSideBarOpen,
+        user
     } = props;
     const { pathname } = useLocation();
     const [active, setActive] = useState('');
@@ -162,6 +164,8 @@ const SideBar: FC<PropsWithChildren<ISideBarProps>> = (props) => {
 
                         </List>
                     </Box>
+                    <UserItem user={user} />
+
                 </Drawer >)
             }
         </Box >
