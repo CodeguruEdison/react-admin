@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface IThemeMode {
-    mode: 'dark' | 'light'
+export interface IGlobalState {
+    mode: 'dark' | 'light',
+    userId?: string
 }
-const initialState: IThemeMode = {
-    mode: 'dark'
+const initialState: IGlobalState = {
+    mode: 'dark',
+    userId: "63701cc1f03239b7f700000e",
 }
 
 export const globalSlice = createSlice({
