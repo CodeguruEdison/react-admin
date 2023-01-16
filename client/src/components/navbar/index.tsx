@@ -11,12 +11,13 @@ import { AppBar, useTheme, Toolbar, IconButton, InputBase } from '@mui/material'
 import FlexBetween from 'components/FlexBetween';
 
 const NavBar: FC<PropsWithChildren<INavBarProps>> = (props) => {
+    const { isSideBarOpen, setIsSideBarOpen } = props;
     const dispatch: AppDispatch = useDispatch();
     //TODO :type
     const theme: any = useTheme();
     console.log({ mode: theme.palette.mode });
     const handleIconButtonClick = () => {
-        console.log("open/close side bar")
+        setIsSideBarOpen(!isSideBarOpen);
     }
     return (
         <AppBar sx={{
