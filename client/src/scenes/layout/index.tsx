@@ -16,7 +16,7 @@ const Layout = () => {
 
     const userId = useSelector((state: RootState) => state.global.userId);
     const { data: user, isError, isLoading } = useGetUserQuery(userId);
-    console.log({ user });
+    //console.log({ user });
 
 
 
@@ -27,7 +27,7 @@ const Layout = () => {
         <Box width="100%" height="100%" display={isNonMobile ? 'flex' : 'block'} >
 
             <SideBar isNonMobile drawerWidth="250px" isSideBarOpen={isSideBarOpen} setIsSideBarOpen={handleOnSideBarOpen} user={user} />
-            <Box>
+            <Box flexGrow={1}>
                 <Navbar isSideBarOpen={isSideBarOpen} setIsSideBarOpen={handleOnSideBarOpen} user={user} />
                 <Outlet />
             </Box>

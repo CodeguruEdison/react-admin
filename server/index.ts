@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
-import clientRoutes from './routes/clientRoutes';
+import clientRoutes from './routes/client';
 import generalRoutes from './routes/general';
 import managementRoutes from './routes/managementRoutes';
 import salesRoutes from './routes/salesRoutes';
