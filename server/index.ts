@@ -17,7 +17,9 @@ import salesRoutes from './routes/salesRoutes';
   DATA IMPORT
  */
 import User from './models/user';
-import { dataUser } from './data/index';
+import { dataUser, dataProduct, dataProductStat } from './data/index';
+import Product from './models/product';
+import ProductStat from './models/productStat';
 
 /* CONFIGURATION */
 
@@ -53,6 +55,9 @@ mongoose.connect(url, {
         /** ONLY ADD one time */
         // User.deleteMany({})
         // User.insertMany(dataUser);
+        // Product.insertMany(dataProduct);
+        //ProductStat.insertMany(dataProductStat);
+
     }).catch((error) => console.log(`${error} did not connect`))
 
 
