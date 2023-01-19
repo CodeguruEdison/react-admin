@@ -5,13 +5,17 @@ import { IUser } from 'models/user/user.type';
 
 export const api = createApi({
     reducerPath: 'adminApi',
-    tagTypes: ["User", "Customers"],
+    tagTypes: ["User", "Customers","Products"],
     baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
 
     endpoints: (builder) => ({
         getUser: builder.query<IUser, string>({
             query: (id) => `general/user/${id}`,
             providesTags: ['User']
+        }),
+        getProducts:builder.query<any[],void>({
+            query:()=>'client/products',
+            providesTags:['Products']
         }),
         getCustomers: builder.query<ICustomer[], void>({
             query: () => "client/customers",
@@ -22,5 +26,6 @@ export const api = createApi({
 
 export const {
     useGetUserQuery,
-    useGetCustomersQuery
+    useGetCustomersQuery,
+    useGetProductsQuery
 } = api;

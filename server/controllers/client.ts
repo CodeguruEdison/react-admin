@@ -27,7 +27,8 @@ export const getProducts = async (req: express.Request, res: express.Response) =
                     stat
                 }
             })
-        )
+        );
+        res.status(200).json(productsWithStat);
     }
     catch (error: any) {
         res.status(400).json({ message: error.message })
