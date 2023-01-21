@@ -23,7 +23,7 @@ export const getProducts = async (req: express.Request, res: express.Response) =
                     productId: product._id
                 })
                 return {
-                    ...product,
+                    ...product._doc,
                     stat
                 }
             })

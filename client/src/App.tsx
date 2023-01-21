@@ -28,7 +28,7 @@ const App = () => {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path='/customers' element={<Customers />} />
-              <Route path="/products" element={<Products/>}/>
+              <Route path="/products" element={<Products />} />
             </Route>
           </Routes>
         </ThemeProvider>
