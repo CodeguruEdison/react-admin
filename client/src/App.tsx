@@ -10,6 +10,7 @@ import Dashboard from 'scenes/dashboard';
 import Layout from 'scenes/layout';
 import Customers from 'scenes/customers';
 import Products from 'scenes/products';
+import Transactions from 'scenes/transactions';
 
 
 
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path='/customers' element={<Customers />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/transactions" element={<Transactions />} />
             </Route>
           </Routes>
         </ThemeProvider>
