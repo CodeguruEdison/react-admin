@@ -8,6 +8,7 @@ const DataGridCustomToolbar: FC<PropsWithChildren<IDataGridCustomToolbarProps>> 
 
     const { onSearchChange, searchInput, onSearchInputChange } = props;
     const handleOnSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.value);
         onSearchChange?.(e.target.value);
     }
     const handleIconButtonClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -23,7 +24,7 @@ const DataGridCustomToolbar: FC<PropsWithChildren<IDataGridCustomToolbarProps>> 
                     <GridToolbarDensitySelector />
                     <GridToolbarExport />
                 </FlexBetween>
-                <TextField label="searxh..."
+                <TextField label="Search..."
                     sx={{ mb: "0.5rem", width: "15rem" }}
                     onChange={handleOnSearchChange}
                     value={searchInput} variant="standard"

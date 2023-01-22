@@ -18,6 +18,7 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
     const [searchInput, setSearchInput] = useState("");
 
 
+
     const theme: any = useTheme();
     const handleOnPageStateChange = (value: any) => (key: keyof IPagination) => {
         console.log({ value, key });
@@ -37,6 +38,12 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
         //         sort: { ...model }
         //     }
         // });
+    }
+    const handleOnSearchChange = (value: string) => {
+        handleOnPageStateChange(value)("search");
+    }
+    const handleOnSearchInputChange = (value: string) => {
+        setSearchInput(value);
     }
     return (
         <Box m="1.5rem 2.5rem">
@@ -81,7 +88,7 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
                     onSortModelChange={handleGridSortModelOnChange}
                     components={{ Toolbar: DataGridCustomToolbar }}
                     componentsProps={{
-                        toolbar: {}
+                        toolbar: { searchInput, onSearchChange: handleOnSearchChange, onSearchInputChange: handleOnSearchInputChange }
                     }}
 
                 />
