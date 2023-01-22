@@ -3,6 +3,8 @@ import * as express from 'express'
 import Product from '../models/product'
 import ProductStat from '../models/productStat'
 import Transaction from '../models/transaction'
+import getCountryIso3 from 'country-iso-2-to-3'
+import { access } from 'fs'
 
 export const getCustomers = async (
   req: express.Request,
@@ -83,6 +85,42 @@ export const getTransactions = async (
       transactions,
       total,
     })
+  } catch (error) {
+    const anyError = error as any
+    res.status(404).json({ message: anyError.message })
+  }
+}
+export const getGeography = async (
+  req: express.Request,
+  res: express.Response,
+) => {
+  try {
+    const users = await User.find()
+    // const mappedLocations = users.reduce((acc, { country }) => {
+    //   // const countryISO3 = getCountryIso3(country)
+    //   // if (!acc[countryISO3]) {
+    //   //   acc[countryISO3] = 0
+    //   // }
+    //   // acc[countryISO3]++
+    //   return acc
+    // }, new Map<string, number>())
+
+    const mappedLocations = users.reduce((acc, user) => {
+      const { country } = user
+      const countryISO3: string = getCountryIso3(country)
+      if (!acc.has(countryISO3)) {
+        acc.set(countryISO3, 0)
+      }
+      const newValue = (acc.get(countryISO3) || 0) + 1
+      acc.set(countryISO3, newValue)
+      return acc
+    }, new Map<string, number>())
+
+    const formattedLocations = [...mappedLocations].map(([key, value]) => {
+      return { id: key, value: value }
+    })
+    res.status(200).json(formattedLocations)
+
   } catch (error) {
     const anyError = error as any
     res.status(404).json({ message: anyError.message })
