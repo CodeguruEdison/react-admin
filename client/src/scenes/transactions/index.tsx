@@ -1,6 +1,7 @@
 
 import { Box, useTheme } from '@mui/material';
 import { DataGrid, GridCallbackDetails, GridSortModel } from '@mui/x-data-grid';
+import DataGridCustomToolbar from 'components/datagrid/DataGridCustomToolbar';
 import Header from 'components/header';
 import { IPagination } from 'models/common/common.type';
 
@@ -14,7 +15,7 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
     const [pageinationState, setPaginationState] = useState<IPagination>({ page: 0, pageSize: 20, sort: {}, search: '' });
     const { page, pageSize, sort, search } = pageinationState;
     const { data, isLoading } = useGetTransactionsQuery(pageinationState)
-
+    const [searchInput, setSearchInput] = useState("");
 
 
     const theme: any = useTheme();
@@ -78,6 +79,10 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
                     onPageChange={(value) => handleOnPageStateChange(value)('page')}
                     onPageSizeChange={(value) => handleOnPageStateChange(value)('pageSize')}
                     onSortModelChange={handleGridSortModelOnChange}
+                    components={{ Toolbar: DataGridCustomToolbar }}
+                    componentsProps={{
+                        toolbar: {}
+                    }}
 
                 />
 
