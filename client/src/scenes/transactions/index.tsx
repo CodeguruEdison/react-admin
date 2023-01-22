@@ -15,9 +15,7 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
     const { page, pageSize, sort, search } = pageinationState;
     const { data, isLoading } = useGetTransactionsQuery(pageinationState)
 
-    useEffect(() => {
-        console.log(pageinationState);
-    }, [pageinationState]);
+
 
     const theme: any = useTheme();
     const handleOnPageStateChange = (value: any) => (key: keyof IPagination) => {
@@ -30,8 +28,14 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
         });
     }
     const handleGridSortModelOnChange = (model: GridSortModel, details: GridCallbackDetails) => {
-        const sortModel = { ...model };
+        const [sortModel] = model;
         handleOnPageStateChange(sortModel)('sort');
+        // setPaginationState(prv => {
+        //     return {
+        //         ...prv,
+        //         sort: { ...model }
+        //     }
+        // });
     }
     return (
         <Box m="1.5rem 2.5rem">
@@ -64,7 +68,7 @@ const Transactions: FC<PropsWithChildren<ITransactionProp>> = (props) => {
                 <DataGrid loading={isLoading || !data} getRowId={(row) => row._id}
                     rows={(data && data.transactions) || []}
                     columns={columns}
-                    rowCount={data && data.total}
+                    rowCount={data && data.total || 0}
                     rowsPerPageOptions={[20, 50, 100]}
                     pagination={true}
                     page={page}
