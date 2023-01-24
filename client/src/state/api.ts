@@ -43,7 +43,7 @@ export const api = createApi({
       query: () => 'client/geography',
       providesTags: ['Geography'],
     }),
-    getSales: builder.query<any[], void>({
+    getSales: builder.query<unknown, void>({
       query: () => 'sales/sales',
       providesTags: ['Sales'],
     }),
