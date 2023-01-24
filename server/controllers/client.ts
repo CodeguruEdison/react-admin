@@ -96,14 +96,6 @@ export const getGeography = async (
 ) => {
   try {
     const users = await User.find()
-    // const mappedLocations = users.reduce((acc, { country }) => {
-    //   // const countryISO3 = getCountryIso3(country)
-    //   // if (!acc[countryISO3]) {
-    //   //   acc[countryISO3] = 0
-    //   // }
-    //   // acc[countryISO3]++
-    //   return acc
-    // }, new Map<string, number>())
 
     const mappedLocations = users.reduce((acc, user) => {
       const { country } = user
@@ -120,7 +112,6 @@ export const getGeography = async (
       return { id: key, value: value }
     })
     res.status(200).json(formattedLocations)
-
   } catch (error) {
     const anyError = error as any
     res.status(404).json({ message: anyError.message })
