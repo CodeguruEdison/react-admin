@@ -1,4 +1,4 @@
-import { IGeographyRow } from './../scenes/geography/geography.type';
+import { IGeographyRow } from './../scenes/geography/geography.type'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { IPagination } from 'models/common/common.type'
 import { ICustomer } from 'models/customer/customer.type'
@@ -8,7 +8,14 @@ import { ITransactionResponse } from 'scenes/transactions/transaction.type'
 
 export const api = createApi({
   reducerPath: 'adminApi',
-  tagTypes: ['User', 'Customers', 'Products', 'Transactions', 'Geography'],
+  tagTypes: [
+    'User',
+    'Customers',
+    'Products',
+    'Transactions',
+    'Geography',
+    'Sales',
+  ],
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
 
   endpoints: (builder) => ({
@@ -36,6 +43,10 @@ export const api = createApi({
       query: () => 'client/geography',
       providesTags: ['Geography'],
     }),
+    getSales: builder.query<any[], void>({
+      query: () => 'sales/sales',
+      providesTags: ['Sales'],
+    }),
   }),
 })
 
@@ -45,4 +56,5 @@ export const {
   useGetProductsQuery,
   useGetTransactionsQuery,
   useGetGeographyQuery,
+  useGetSalesQuery,
 } = api

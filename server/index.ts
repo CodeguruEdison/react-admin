@@ -11,7 +11,7 @@ import morgan from 'morgan'
 import clientRoutes from './routes/client'
 import generalRoutes from './routes/general'
 import managementRoutes from './routes/managementRoutes'
-import salesRoutes from './routes/salesRoutes'
+import salesRoutes from './routes/sales'
 
 /**
   DATA IMPORT
@@ -22,10 +22,12 @@ import {
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from './data/index'
 import Product from './models/product'
 import ProductStat from './models/productStat'
 import Transaction from './models/transaction'
+import OverAllStat from './models/overallStat'
 
 /* CONFIGURATION */
 
@@ -65,5 +67,6 @@ mongoose
     // Product.insertMany(dataProduct);
     //ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction)
+    //OverAllStat.insertMany(dataOverallStat)
   })
   .catch((error) => console.log(`${error} did not connect`))
