@@ -3,9 +3,9 @@ import * as express from 'express'
 import Product from '../models/product'
 import ProductStat from '../models/productStat'
 import Transaction from '../models/transaction'
-import getCountryIso3 from 'country-iso-2-to-3'
+//import getCountryISO3 from 'country-iso-2-to-3'
 import { access } from 'fs'
-
+const getCountryISO3 = require('country-iso-2-to-3')
 export const getCustomers = async (
   req: express.Request,
   res: express.Response,
@@ -99,7 +99,7 @@ export const getGeography = async (
 
     const mappedLocations = users.reduce((acc, user) => {
       const { country } = user
-      const countryISO3: string = getCountryIso3(country)
+      const countryISO3: string = getCountryISO3(country)
       if (!acc.has(countryISO3)) {
         acc.set(countryISO3, 0)
       }
