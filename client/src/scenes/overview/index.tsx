@@ -22,9 +22,7 @@ const OverView: FC<PropsWithChildren<IOverViewProps>> = (props) => {
                         <MenuItem value="units">Units</MenuItem>
                     </Select>
                 </FormControl>
-                <Box>
-                    <OverViewChart view={view} />
-                </Box>
+                <OverViewChart view={view} />
             </Box>
         </Box>
     )
