@@ -15,6 +15,7 @@ import Geography from 'scenes/geography';
 import OverView from 'scenes/overview';
 import Daily from 'scenes/daily';
 import Admin from 'scenes/admin';
+import { BreakDown } from 'scenes';
 
 
 
@@ -39,6 +40,7 @@ const App = () => {
               <Route path="/overview" element={<OverView />} />
               <Route path="/daily" element={<Daily />} />
               <Route path="/admin" element={<Admin />} />
+              <Route path="/breakdown" element={<BreakDown />} />
             </Route>
           </Routes>
         </ThemeProvider>

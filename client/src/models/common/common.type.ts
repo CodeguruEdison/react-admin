@@ -4,3 +4,7 @@ export interface IPagination {
   sort: any
   search: string
 }
+
+export interface ISalesCategory {
+  [key: string]: number
+}
