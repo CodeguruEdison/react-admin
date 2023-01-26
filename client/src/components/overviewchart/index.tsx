@@ -48,11 +48,9 @@ const OverViewChart: FC<PropsWithChildren<IOverviewChartProps>> = (props) => {
     }, [data]); // eslint-disable-line react-hooks/exhaustive-deps
 
 
-    useEffect(() => {
-        console.log({ view, totalSalesLine, totalUnitsLine });
-    }, [data]);
 
-    if (!data || isLoading) return (<>"Loading..."</>);
+
+    if (!data || isLoading) return (<>Loading...</>);
 
     return (
         <ResponsiveLine
