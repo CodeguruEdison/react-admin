@@ -14,6 +14,7 @@ import Transactions from 'scenes/transactions';
 import Geography from 'scenes/geography';
 import OverView from 'scenes/overview';
 import Daily from 'scenes/daily';
+import Admin from 'scenes/admin';
 
 
 
@@ -37,6 +38,7 @@ const App = () => {
               <Route path="/geography" element={<Geography />} />
               <Route path="/overview" element={<OverView />} />
               <Route path="/daily" element={<Daily />} />
+              <Route path="/admin" element={<Admin />} />
             </Route>
           </Routes>
         </ThemeProvider>

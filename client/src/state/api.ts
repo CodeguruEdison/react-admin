@@ -15,6 +15,7 @@ export const api = createApi({
     'Transactions',
     'Geography',
     'Sales',
+    'Admins',
   ],
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
 
@@ -47,6 +48,10 @@ export const api = createApi({
       query: () => 'sales/sales',
       providesTags: ['Sales'],
     }),
+    getAdmins: builder.query<IUser[], void>({
+      query: () => 'management/admins',
+      providesTags: ['Admins'],
+    }),
   }),
 })
 
@@ -57,4 +62,5 @@ export const {
   useGetTransactionsQuery,
   useGetGeographyQuery,
   useGetSalesQuery,
+  useGetAdminsQuery,
 } = api

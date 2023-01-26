@@ -10,7 +10,7 @@ import morgan from 'morgan'
 
 import clientRoutes from './routes/client'
 import generalRoutes from './routes/general'
-import managementRoutes from './routes/managementRoutes'
+import managementRoutes from './routes/management'
 import salesRoutes from './routes/sales'
 
 /**
@@ -46,7 +46,7 @@ app.use(cors())
 
 app.use('/client', clientRoutes)
 app.use('/general', generalRoutes)
-app.use('management', managementRoutes)
+app.use('/management', managementRoutes)
 app.use('/sales', salesRoutes)
 /* MONGOOSE SETUP */
 
