@@ -28,6 +28,8 @@ import Product from './models/product'
 import ProductStat from './models/productStat'
 import Transaction from './models/transaction'
 import OverAllStat from './models/overallStat'
+import { dataAffiliateStat } from './data/index'
+import AffiliaeteState from './models/AffiliateStat'
 
 /* CONFIGURATION */
 
@@ -68,5 +70,6 @@ mongoose
     //ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction)
     //OverAllStat.insertMany(dataOverallStat)
+    //AffiliaeteState.insertMany(dataAffiliateStat)
   })
   .catch((error) => console.log(`${error} did not connect`))

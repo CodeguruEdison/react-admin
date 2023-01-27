@@ -1,3 +1,3 @@
 import BreakDown from './breakdown'
-
-export { BreakDown }
+import Performance from './performance'
+export { BreakDown, Performance }
