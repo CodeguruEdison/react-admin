@@ -17,6 +17,7 @@ export const api = createApi({
     'Sales',
     'Admins',
     'Performance',
+    'Dashboard',
   ],
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
 
@@ -57,6 +58,10 @@ export const api = createApi({
       query: (id) => `management/performance/${id}`,
       providesTags: ['Performance'],
     }),
+    getDashboard: builder.query({
+      query: () => 'managemnt/dashboard',
+      providesTags: ['Dashboard'],
+    }),
   }),
 })
 
@@ -69,4 +74,5 @@ export const {
   useGetSalesQuery,
   useGetAdminsQuery,
   useGetUserPerformanceQuery,
+  useGetDashboardQuery,
 } = api
