@@ -5,7 +5,7 @@ import { ILineChartData, IOverviewChartProps } from './overviewchart.type'
 import { ResponsiveLine, Serie } from '@nivo/line'
 import { IMonthlyData } from 'scenes/products/product.type';
 
-const OverViewChart: FC<PropsWithChildren<IOverviewChartProps>> = (props) => {
+const OverviewChart: FC<PropsWithChildren<IOverviewChartProps>> = (props) => {
 
     const theme: any = useTheme();
     const { view, isDashboard = false } = props;
@@ -173,4 +173,4 @@ const OverViewChart: FC<PropsWithChildren<IOverviewChartProps>> = (props) => {
     );
 }
 
-export default OverViewChart
+export default OverviewChart

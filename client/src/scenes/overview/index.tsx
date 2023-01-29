@@ -1,6 +1,6 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import Header from 'components/header'
-import OverViewChart from 'components/overviewchart'
+import OverviewChart from 'components/overviewchart'
 import React, { FC, PropsWithChildren, useState } from 'react'
 import { IOverViewProps } from './overview.type'
 
@@ -22,8 +22,9 @@ const OverView: FC<PropsWithChildren<IOverViewProps>> = (props) => {
                         <MenuItem value="units">Units</MenuItem>
                     </Select>
                 </FormControl>
-                <OverViewChart view={view} />
+                <OverviewChart view={view} />
             </Box>
+
         </Box>
     )
 }

@@ -38,10 +38,10 @@ export const getDashboradStats = async (
       dailyData,
       salesByCategory,
     } = overallStat[0]
-    const thisMonthStat = monthlyData.find(({ month }) => {
+    const thisMonthStats = monthlyData.find(({ month }) => {
       return month === currentMonth
     })
-    const todayStat = dailyData.find(({ date }) => {
+    const todaysStat = dailyData.find(({ date }) => {
       return date === currentDay
     })
 
@@ -52,8 +52,9 @@ export const getDashboradStats = async (
       monthlyData,
       dailyData,
       salesByCategory,
-      thisMonthStat,
-      todayStat,
+      thisMonthStats,
+      todaysStat,
+      transactions,
     })
   } catch (error) {
     let message

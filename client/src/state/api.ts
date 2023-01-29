@@ -5,6 +5,7 @@ import { ICustomer } from 'models/customer/customer.type'
 import { IUser } from 'models/user/user.type'
 import { IProduct } from 'scenes/products/product.type'
 import { ITransactionResponse } from 'scenes/transactions/transaction.type'
+import { IDashboardData } from 'scenes/dashboard/dashboard.type'
 
 export const api = createApi({
   reducerPath: 'adminApi',
@@ -58,8 +59,8 @@ export const api = createApi({
       query: (id) => `management/performance/${id}`,
       providesTags: ['Performance'],
     }),
-    getDashboard: builder.query({
-      query: () => 'managemnt/dashboard',
+    getDashboard: builder.query<IDashboardData, void>({
+      query: () => 'general/dashboard',
       providesTags: ['Dashboard'],
     }),
   }),
