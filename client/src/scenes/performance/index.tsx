@@ -82,9 +82,9 @@ const Performance: FC<PropsWithChildren<IPerformanceProps>> = (props) => {
                 }}
             >
                 <DataGrid
-                    loading={isLoading || !data}
-                    getRowId={(row: any) => row._id}
-                    rows={data.sales || []}
+                    loading={isLoading || !data?.sales}
+                    getRowId={(row: any) => row?._id}
+                    rows={data?.sales || []}
                     columns={columns}
                     components={{
                         ColumnMenu: CustomColumnMenu,
