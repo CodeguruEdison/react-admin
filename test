@@ -1,29 +1,97 @@
-export interface Budget {
-    expenseId: string;
-    companyOffice: string;
-    accountName: string;
-    vendorName: string;
-    itemDetail: string;
-    costAssumpNotes: string;
-    fY: string;
-    jan: number;
-    feb: number;
-    mar: number;
-    apr: number;
-    may: number;
-    jun: number;
-    jul: number;
-    aug: number;
-    sep: number;
-    oct: number;
-    nov: number;
-    dec: number;
-    cCNumber: string;
-    cCName: string;
-    deptName: string;
-    deptOwner: string;
-    errorDescription: string | null;
-    budgetYear: number;
-    budgetName: string;
-    budgetId: string;
+import React, { useState, useEffect } from 'react';
+import AgGridReact from 'ag-grid-react';
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+
+interface Budget {
+  expenseId: string;
+  companyOffice: string;
+  accountName: string;
+  vendorName: string;
+  itemDetail: string;
+  costAssumpNotes: string;
+  fY: string;
+  jan: number;
+  feb: number;
+  mar: number;
+  apr: number;
+  may: number;
+  jun: number;
+  jul: number;
+  aug: number;
+  sep: number;
+  oct: number;
+  nov: number;
+  dec: number;
+  cCNumber: string;
+  cCName: string;
+  deptName: string;
+  deptOwner: string;
+  errorDescription: string | null;
+  budgetYear: number;
+  budgetName: string;
+  budgetId: string;
 }
+
+const BudgetGrid: React.FC = () => {
+  const [budgetData, setBudgetData] = useState<Budget[]>([]);
+
+  useEffect(() => {
+    const fetchBudgetData = async () => {
+      try {
+        const response = await fetch('<API_URL>');
+        const data = await response.json();
+        setBudgetData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchBudgetData();
+  }, []);
+
+  const columnDefs = React.useMemo(() => [
+    { headerName: 'Expense Id', field: 'expenseId', editable: true },
+    { headerName: 'Company Office', field: 'companyOffice', editable: true },
+    { headerName: 'Account Name', field: 'accountName', editable: true },
+    { headerName: 'Vendor Name', field: 'vendorName', editable: true },
+    { headerName: 'Item Detail', field: 'itemDetail', editable: true },
+    { headerName: 'Cost Assump Notes', field: 'costAssumpNotes', editable: true },
+    { headerName: 'FY', field: 'fY', editable: true },
+    { headerName: 'Jan', field: 'jan', editable: true, type: 'numericColumn' },
+    { headerName: 'Feb', field: 'feb', editable: true, type: 'numericColumn' },
+    { headerName: 'Mar', field: 'mar', editable: true, type: 'numericColumn' },
+    { headerName: 'Apr', field: 'apr', editable: true, type: 'numericColumn' },
+    { headerName: 'May', field: 'may', editable: true, type: 'numericColumn' },
+    { headerName: 'Jun', field: 'jun', editable: true, type: 'numericColumn' },
+    { headerName:
+  ], []);
+
+  const handleCellValueChanged = (params: any) => {
+    // perform necessary updates to the budgetData array
+  };
+
+  return (
+    <div className="ag-theme-alpine" style={{ height: '500px', width: '100%' }}>
+      <AgGridReact
+        columnDefs={columnDefs}
+        rowData={budgetData}
+        onCellValueChanged={handleCellValueChanged}
+        deltaRowDataMode
+        enableCellChangeFlash
+        animateRows
+        rowSelection="multiple"
+        suppressRowClickSelection
+        pagination={true}
+        paginationAutoPageSize={true}
+        defaultColDef={{
+          sortable: true,
+          resizable: true,
+          filter: true,
+          editable: true
+        }}
+      />
+    </div>
+  );
+};
+
+export default BudgetGrid;
