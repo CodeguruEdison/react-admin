@@ -1,0 +1,29 @@
+export interface Budget {
+    expenseId: string;
+    companyOffice: string;
+    accountName: string;
+    vendorName: string;
+    itemDetail: string;
+    costAssumpNotes: string;
+    fY: string;
+    jan: number;
+    feb: number;
+    mar: number;
+    apr: number;
+    may: number;
+    jun: number;
+    jul: number;
+    aug: number;
+    sep: number;
+    oct: number;
+    nov: number;
+    dec: number;
+    cCNumber: string;
+    cCName: string;
+    deptName: string;
+    deptOwner: string;
+    errorDescription: string | null;
+    budgetYear: number;
+    budgetName: string;
+    budgetId: string;
+}
